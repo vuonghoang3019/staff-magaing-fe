@@ -1,0 +1,86 @@
+.span_pseudo, .chiller_cb span:before, .chiller_cb span:after {
+    content: "";
+    display: inline-block;
+    background: $white-color;
+    width: 0;
+    height: 0.2rem;
+    position: absolute;
+    transform-origin: 0 0;
+}
+
+.chiller_cb {
+    position: relative;
+    height: 2rem;
+
+    input {
+        display: none;
+
+        &:checked {
+            & ~ span {
+                background: $lime-green-color;
+                border-color: $lime-green-color;
+
+                &:before {
+                    width: 1rem;
+                    height: 0.15rem;
+                    transition: width 0.1s;
+                    transition-delay: 0.3s;
+                }
+
+                &:after {
+                    width: 0.4rem;
+                    height: 0.15rem;
+                    transition: width 0.1s;
+                    transition-delay: 0.2s;
+                }
+            }
+        }
+
+        &:disabled {
+            & ~ span {
+                background: $gray-bright-color;
+                border-color: $gray-bright-color;
+            }
+
+            & ~ label {
+                color: #dcdcdc;
+
+                &:hover {
+                    cursor: default;
+                }
+            }
+        }
+    }
+
+    label {
+        padding-left: 2rem;
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+        margin-bottom: 0;
+    }
+
+    span {
+        display: inline-block;
+        width: 1.2rem;
+        height: 1.2rem;
+        border: 1px solid #ccc;
+        position: absolute;
+        left: 0;
+        transition: all 0.2s;
+        z-index: 1;
+        box-sizing: content-box;
+
+        &:before {
+            transform: rotate(-55deg);
+            top: 1rem;
+            left: 0.37rem;
+        }
+
+        &:after {
+            transform: rotate(35deg);
+            bottom: 0.35rem;
+            left: 0.2rem;
+        }
+    }
+}

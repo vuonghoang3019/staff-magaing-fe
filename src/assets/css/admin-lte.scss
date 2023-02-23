@@ -1,0 +1,41 @@
+.breadcrumb {
+    font-size: 14px;
+
+    a {
+        color: $main-text-color;
+    }
+}
+
+.btn {
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid transparent;
+}
+
+.btn-default {
+    background-color: $white-color !important;
+}
+
+.btn-default.hover, .btn-default:active, .btn-default:hover {
+    background-color: $platinum-color !important;
+}
+
+.content-header {
+    padding: 15px 15px 0 15px !important;
+}
+
+.form-group {
+    label {
+        font-weight: 400 !important;
+    }
+}
+
+.box-header {
+    background: $white-color;
+    padding: 10px;
+
+    &.with-border {
+        border-bottom: 1px solid $cultured-color;
+    }
+
+}

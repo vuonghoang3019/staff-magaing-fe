@@ -55,7 +55,7 @@
             return {
                 sidebars: [
                     {
-                        Code: 'about',
+                        Code: 'abouts',
                         DisplayName: 'About',
                         Icon: 'fas fa-info-circle',
                         Sort: 1,
@@ -69,7 +69,7 @@
                 ],
                 sidebarChild: [
                     {
-                        Code: 'about',
+                        Code: 'abouts',
                         DisplayName: 'About',
                         Icon: 'fas fa-info-circle',
                         Sort: 1,
