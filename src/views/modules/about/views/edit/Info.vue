@@ -48,7 +48,7 @@
             ckeditor: CKEditor.component
         },
 
-        data() {
+        setup() {
             const textEditor = {
                 editor: ClassicEditor,
                 editorData: '<p>Content of the editor.</p>',

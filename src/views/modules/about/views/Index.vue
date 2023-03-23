@@ -58,7 +58,7 @@
     import IndexMixin from '@/app/mixins/index-page';
     import { ref, computed } from "vue";
     import Config from '../provider/config';
-    import CodeHeader from "@/views/modules/About/views/index/CodeHeader";
+    import CodeHeader from "@/views/modules/about/views/index/CodeHeader";
 
     export default {
         mixins: [IndexMixin],

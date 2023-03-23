@@ -1,5 +1,7 @@
-import {Vue} from './core/npm';
+import { createApp } from "vue";
+import App from "../App.vue";
 try {
+    const app = createApp(App);
 
 
     //load style

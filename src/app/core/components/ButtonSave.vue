@@ -50,9 +50,9 @@
                 default: -1,
             },
         },
-        setup() {
+        setup(props, context) {
             const action = () => {
-                this.$emit('clicked');
+                context.emit('clicked');
             };
 
             return {
