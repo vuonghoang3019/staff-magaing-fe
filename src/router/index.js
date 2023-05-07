@@ -1,7 +1,8 @@
 import {createRouter, createWebHistory} from "vue-router";
 import MainLayout from "../layouts/MainLayout";
 import HomeView from "@/views/Dashboard";
-import About from "@/views/modules/About/views/Index";
+import About from "@/views/modules/about/views/Index";
+import ConfigError from "@/views/modules/errors/provider/config";
 
 const routes = [
     {
@@ -28,7 +29,7 @@ const routes = [
             {
                 path: 'about/create',
                 name: 'About.Create',
-                component: () => import("../views/modules/About/views/Create"),
+                component: () => import("../views/modules/about/views/Create"),
                 meta: {
                     title: 'Create Abouts',
                     image: '',
@@ -41,7 +42,7 @@ const routes = [
             {
                 path: 'about/edit/:id',
                 name: 'About.Edit',
-                component: () => import("../views/modules/About/views/Edit"),
+                component: () => import("../views/modules/about/views/Edit"),
                 meta: {
                     title: 'Edit Abouts',
                     image: '',
@@ -53,7 +54,34 @@ const routes = [
             },
         ]
     },
-    { path: '/:pathMatch(.*)*', name: 'not-found', component: import("../views/error/404") },
+    {
+        path: '/500',
+        name: ConfigError.router.e500,
+        component: require('../views/modules/errors/views/500.vue').default,
+        beforeEnter: (to, from, next) => {
+            document.body.className = '';
+            next();
+        },
+    },
+    {
+        path: '/404',
+        name: ConfigError.router.e404,
+        component: require('../views/modules/errors/views/404.vue').default,
+        beforeEnter: (to, from, next) => {
+            document.body.className = '';
+            next();
+        },
+    },
+    {
+        path: '/401',
+        name: ConfigError.router.e401,
+        component: require('../views/modules/errors/views/401.vue').default,
+        beforeEnter: (to, from, next) => {
+            document.body.className = '';
+            next();
+        },
+    },
+    {path: '/:pathMatch(.*)*', name: 'not-found', component: import("../views/modules/errors/views/404.vue")},
 ];
 
 const router = createRouter({

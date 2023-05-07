@@ -7,9 +7,15 @@ import 'vue3-easy-data-table/dist/style.css';
 
 import CKEditor from '@ckeditor/ckeditor5-vue';
 
+import toastr from 'toastr';
+
+import axios from "axios";
+
 export {
     Vue,
     DatePicker,
     EasyDataTable,
-    CKEditor
+    CKEditor,
+    axios,
+    toastr
 }

@@ -7,7 +7,7 @@
                 <div class="box-header with-border">
                     <span>Dates</span>
                 </div>
-                <div class="box-body">
+                <div class="box-body" v-if="test">
                     <p>
                         <search-date keyword="from" placeholder="FromDate"/>
                     </p>
@@ -56,9 +56,9 @@
 
 <script>
     import IndexMixin from '@/app/mixins/index-page';
-    import { ref, computed } from "vue";
+    import {ref, computed, onMounted, reactive} from "vue";
     import Config from '../provider/config';
-    import CodeHeader from "@/views/modules/About/views/index/CodeHeader";
+    import CodeHeader from "@/views/modules/about/views/index/CodeHeader";
 
     export default {
         mixins: [IndexMixin],
@@ -66,8 +66,9 @@
             CodeHeader,
         },
 
-        setup() {
+        setup(props, context) {
             const itemsSelected = ref([]);
+            const test = ref(false);
             const tables = {
                     columns: [
                         { text: "PLAYER", value: "player" },
@@ -89,12 +90,14 @@
             const to = computed(() => {
                 return {name: Config.router.edit, params: {id: '123-123-123'}}
             })
+
             return {
                 tables,
                 itemsSelected,
                 Config,
-                to
+                to,
+              test
             }
-        }
+        },
     }
 </script>
