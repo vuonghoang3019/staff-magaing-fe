@@ -318,7 +318,7 @@ buildings:
     - school-lock
     - shop
     - shop-lock
-    - store
+    - service
     - synagogue
     - tent
     - tent-arrow-down-to-line
@@ -2539,8 +2539,8 @@ shopping:
     - shop-lock
     - shop-slash
     - star
-    - store
-    - store-slash
+    - service
+    - service-slash
     - stripe
     - stripe-s
     - tag

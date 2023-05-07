@@ -43,6 +43,8 @@
     import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
     import {CKEditor} from '@/app/core/npm';
     import {ref, reactive} from 'vue';
+    import service from "@/views/modules/about/provider/service";
+    import {isNull} from "@/app/helper";
 
     export default {
         components: {
@@ -60,7 +62,11 @@
             };
 
             const store = () => {
-                console.log(this.msg);
+                service.actions.store(form).then((res) => {
+                    if (!isNull(res)) {
+                        // console.log(res)
+                    }
+                })
             };
 
             return {

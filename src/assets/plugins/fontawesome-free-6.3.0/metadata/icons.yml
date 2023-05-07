@@ -6463,7 +6463,7 @@ cash-register:
       - pay
       - payment
       - purchase
-      - store
+      - service
   styles:
     - solid
   unicode: f788
@@ -30684,7 +30684,7 @@ shoe-prints:
 shop:
   aliases:
     names:
-      - store-alt
+      - service-alt
     unicodes:
       secondary:
         - 10f54f
@@ -30703,7 +30703,7 @@ shop:
       - market
       - purchase
       - shopping
-      - store
+      - service
   styles:
     - solid
   unicode: f54f
@@ -30728,7 +30728,7 @@ shop-lock:
       - quarantine
       - shop
       - shopping
-      - store
+      - service
   styles:
     - solid
   unicode: e4a5
@@ -30736,7 +30736,7 @@ shop-lock:
 shop-slash:
   aliases:
     names:
-      - store-alt-slash
+      - service-alt-slash
     unicodes:
       secondary:
         - '10e070'
@@ -33544,7 +33544,7 @@ store:
       - market
       - purchase
       - shopping
-      - store
+      - service
   styles:
     - solid
   unicode: f54e

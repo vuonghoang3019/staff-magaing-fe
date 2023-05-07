@@ -3,7 +3,6 @@ import App from "../App.vue";
 try {
     const app = createApp(App);
 
-
     //load style
     window.$ = window.jQuery = require("jquery");
     require("../assets/css/app.scss");
@@ -18,6 +17,8 @@ try {
 
     //load env
     require("./env");
+    window.notify = require('./provider/notify-provider').default;
+    window.axios = require('./provider/axios-http-provider').default;
 }
 catch (e) {
     console.log(e)
