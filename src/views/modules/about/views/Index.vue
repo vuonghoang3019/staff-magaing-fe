@@ -56,7 +56,7 @@
 
 <script>
 import IndexMixin from '@/app/mixins/index-page';
-import {ref, computed} from "vue";
+import {ref, computed, onMounted} from "vue";
 import Config from '../provider/config';
 import CodeHeader from "@/views/modules/about/views/index/CodeHeader";
 import service from "@/views/modules/about/provider/service";
@@ -122,6 +122,10 @@ export default {
         };
         const to = computed(() => {
             return {name: Config.router.edit, params: {id: '123-123-123'}}
+        })
+
+        onMounted(() => {
+            index();
         })
 
         const index = () => {

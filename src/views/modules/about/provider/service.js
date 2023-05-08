@@ -3,7 +3,7 @@ import api from './api';
 const service = {
     actions: {
         async index() {
-            return await axios.get(api.store)
+            return await axios.get(api.index)
         },
 
         async store(data = {}) {
