@@ -2,12 +2,12 @@
     <content-header/>
     <index-content>
         <template #filters>
-<!--            <search-keyword/>-->
+            <!--            <search-keyword/>-->
             <div class="box">
                 <div class="box-header with-border">
                     <span>Dates</span>
                 </div>
-                <div class="box-body" v-if="test">
+                <div class="box-body">
                     <p>
                         <search-date keyword="from" placeholder="FromDate"/>
                     </p>
@@ -55,49 +55,92 @@
 </template>
 
 <script>
-    import IndexMixin from '@/app/mixins/index-page';
-    import {ref, computed, onMounted, reactive} from "vue";
-    import Config from '../provider/config';
-    import CodeHeader from "@/views/modules/about/views/index/CodeHeader";
+import IndexMixin from '@/app/mixins/index-page';
+import {ref, computed} from "vue";
+import Config from '../provider/config';
+import CodeHeader from "@/views/modules/about/views/index/CodeHeader";
+import service from "@/views/modules/about/provider/service";
+import {isNull} from "@/app/helper";
 
-    export default {
-        mixins: [IndexMixin],
-        components: {
-            CodeHeader,
-        },
+export default {
+    mixins: [IndexMixin],
+    components: {
+        CodeHeader,
+    },
 
-        setup(props, context) {
-            const itemsSelected = ref([]);
-            const test = ref(false);
-            const tables = {
-                    columns: [
-                        { text: "PLAYER", value: "player" },
-                        { text: "TEAM", value: "team"},
-                        { text: "NUMBER", value: "number"},
-                        { text: "POSITION", value: "position"},
-                        { text: "HEIGHT", value: "indicator.height"},
-                        { text: "WEIGHT (lbs)", value: "indicator.weight", sortable: true},
-                        { text: "LAST ATTENDED", value: "lastAttended", width: 200},
-                        { text: "COUNTRY", value: "country"},
-                    ],
-                    data: [
-                        { player: "Stephen Curry", team: "GSW", number: 30, position: 'G', indicator: {"height": '6-2', "weight": 185}, lastAttended: "Davidson", country: "USA"},
-                        { player: "Lebron James", team: "LAL", number: 6, position: 'F', indicator: {"height": '6-9', "weight": 250}, lastAttended: "St. Vincent-St. Mary HS (OH)", country: "USA"},
-                        { player: "Kevin Durant", team: "BKN", number: 7, position: 'F', indicator: {"height": '6-10', "weight": 240}, lastAttended: "Texas-Austin", country: "USA"},
-                        { player: "Giannis Antetokounmpo", team: "MIL", number: 34, position: 'F', indicator: {"height": '6-11', "weight": 242}, lastAttended: "Filathlitikos", country: "Greece"},
-                    ]
-                };
-            const to = computed(() => {
-                return {name: Config.router.edit, params: {id: '123-123-123'}}
+    setup(props, context) {
+        const itemsSelected = ref([]);
+        const tables = {
+            columns: [
+                {text: "PLAYER", value: "player"},
+                {text: "TEAM", value: "team"},
+                {text: "NUMBER", value: "number"},
+                {text: "POSITION", value: "position"},
+                {text: "HEIGHT", value: "indicator.height"},
+                {text: "WEIGHT (lbs)", value: "indicator.weight", sortable: true},
+                {text: "LAST ATTENDED", value: "lastAttended", width: 200},
+                {text: "COUNTRY", value: "country"},
+            ],
+            data: [
+                {
+                    player: "Stephen Curry",
+                    team: "GSW",
+                    number: 30,
+                    position: 'G',
+                    indicator: {"height": '6-2', "weight": 185},
+                    lastAttended: "Davidson",
+                    country: "USA"
+                },
+                {
+                    player: "Lebron James",
+                    team: "LAL",
+                    number: 6,
+                    position: 'F',
+                    indicator: {"height": '6-9', "weight": 250},
+                    lastAttended: "St. Vincent-St. Mary HS (OH)",
+                    country: "USA"
+                },
+                {
+                    player: "Kevin Durant",
+                    team: "BKN",
+                    number: 7,
+                    position: 'F',
+                    indicator: {"height": '6-10', "weight": 240},
+                    lastAttended: "Texas-Austin",
+                    country: "USA"
+                },
+                {
+                    player: "Giannis Antetokounmpo",
+                    team: "MIL",
+                    number: 34,
+                    position: 'F',
+                    indicator: {"height": '6-11', "weight": 242},
+                    lastAttended: "Filathlitikos",
+                    country: "Greece"
+                },
+            ]
+        };
+        const to = computed(() => {
+            return {name: Config.router.edit, params: {id: '123-123-123'}}
+        })
+
+        const index = () => {
+            service.actions.index().then(res => {
+                if (!isNull(res)) {
+                    console.log(res);
+                }
             })
+        }
 
-            return {
-                tables,
-                itemsSelected,
-                Config,
-                to,
-              test
-            }
-        },
-    }
+        return {
+            tables,
+            itemsSelected,
+            Config,
+            to,
+            index
+        }
+
+        console.log(index());
+    },
+}
 </script>

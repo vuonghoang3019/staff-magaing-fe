@@ -24,13 +24,13 @@
                 <div class="col-md-4 form-group m-auto">
                     <div class="chiller_cb p-10">
                         <input id="myCheckbox" type="checkbox" v-model="form['Status']">
-                        <label for="myCheckbox">Checkbox checked</label>
+                        <label for="myCheckbox">Status</label>
                         <span></span>
                     </div>
                 </div>
                 <div class="col-md-12 form-group">
                     <label for="ShortContent">Content</label>
-                    <ckeditor :editor="textEditor.editor" v-model="textEditor.editorData"
+                    <ckeditor :editor="textEditor.editor" v-model="form['Content']"
                               :config="textEditor.editorConfig"></ckeditor>
                 </div>
             </form>
@@ -57,14 +57,13 @@
 
             const textEditor = {
                 editor: ClassicEditor,
-                editorData: '<p>Content of the editor.</p>',
                 editorConfig: {}
             };
 
             const store = () => {
                 service.actions.store(form).then((res) => {
                     if (!isNull(res)) {
-                        // console.log(res)
+                        notify.success('Operation success');
                     }
                 })
             };

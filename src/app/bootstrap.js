@@ -1,5 +1,8 @@
 import { createApp } from "vue";
 import App from "../App.vue";
+import NotifyProvider from './provider/notify-provider';
+import AxiosHttpProvider from './provider/axios-http-provider';
+
 try {
     const app = createApp(App);
 
@@ -17,8 +20,9 @@ try {
 
     //load env
     require("./env");
-    window.notify = require('./provider/notify-provider').default;
-    window.axios = require('./provider/axios-http-provider').default;
+
+    window.notify = NotifyProvider;
+    window.axios = AxiosHttpProvider;
 }
 catch (e) {
     console.log(e)
