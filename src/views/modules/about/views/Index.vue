@@ -31,17 +31,22 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">
+                        <input type="checkbox" value="all" id="all">
+                    </th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Slug</th>
+                    <th scope="col">CreatedDate</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(about, index) in abouts" :key="index">
-                        <th scope="row">1</th>
+                        <th scope="row">
+                            <input type="checkbox" :value=about.Id :id=about.Id>
+                        </th>
                         <td>{{ about.ImagePath }}</td>
-                        <td>{{ about.Title }}</td>
+                        <td><router-link :to="{name: 'About.Edit', params: {id:about.Id}}">{{ about.Title }}</router-link></td>
                         <td>{{ about.Slug }}</td>
                         <td>{{ about.CreatedDate }}</td>
                     </tr>
@@ -68,24 +73,22 @@ export default {
     setup(props, context) {
         const itemsSelected = ref([]);
         let abouts = ref([]);
-        service.actions.index().then(res => {
-            if (!isNull(res)) {
-                abouts.value = res.data.Data.Abouts.data;
-                // console.log(abouts[0].Title);
-            }
+
+        onMounted(() => {
+            index();
         })
-        // onMounted(() => {
-        //     index();
+
+        const index = () => {
+            service.actions.index().then(res => {
+                if (!isNull(res)) {
+                    abouts.value = res.data.Data.Abouts.data;
+                }
+            })
+        }
+
+        // const to = computed(() => {
+        //     return {name: 'About.Edit', params: {id: }}
         // })
-        //
-        // const index = () => {
-        //     service.actions.index().then(res => {
-        //         if (!isNull(res)) {
-        //             abouts.value = res.data.Data.Abouts.data;
-        //             // console.log(abouts[0].Title);
-        //         }
-        //     })
-        // }
 
         return {
             itemsSelected,
