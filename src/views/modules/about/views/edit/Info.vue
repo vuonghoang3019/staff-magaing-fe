@@ -7,7 +7,7 @@
             <form class="form-content row">
                 <div class="col-md-6 form-group">
                     <label for="ContractNumber">Title</label>
-                    <input type="text" class="form-control" id="ContractNumber">
+                    <input type="text" class="form-control" id="Title" v-model="form">
                 </div>
                 <div class="col-md-6 form-group">
                     <label for="ShortContent">ShortContent</label>
@@ -30,7 +30,8 @@
                 </div>
                 <div class="col-md-12 form-group">
                     <label for="ShortContent">Content</label>
-                    <ckeditor :editor="textEditor.editor" v-model="textEditor.editorData" :config="textEditor.editorConfig"></ckeditor>
+                    <ckeditor :editor="textEditor.editor" v-model="textEditor.editorData"
+                              :config="textEditor.editorConfig"></ckeditor>
                 </div>
             </form>
         </div>
@@ -38,25 +39,38 @@
 </template>
 
 <script>
-    import {ButtonSave} from "@/app/core/components";
-    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-    import {CKEditor} from '@/app/core/npm';
+import {ButtonSave} from "@/app/core/components";
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {CKEditor} from '@/app/core/npm';
+import {onMounted, ref, toRefs} from "vue";
 
-    export default {
-        components: {
-            ButtonSave,
-            ckeditor: CKEditor.component
-        },
+export default {
+    components: {
+        ButtonSave,
+        ckeditor: CKEditor.component
+    },
 
-        setup() {
-            const textEditor = {
-                editor: ClassicEditor,
-                editorData: '<p>Content of the editor.</p>',
-                editorConfig: {}
-            }
-            return {
-                textEditor
-            }
+    props: {
+        form: {
+            type: String,
+            require: true,
+        }
+    },
+
+    setup(props, context) {
+        const {form} = props;
+        const textEditor = {
+            editor: ClassicEditor,
+            editorData: '<p>Content of the editor.</p>',
+            editorConfig: {}
+        }
+
+        console.log(form.value);
+
+        return {
+            textEditor,
+            form
         }
     }
+}
 </script>
