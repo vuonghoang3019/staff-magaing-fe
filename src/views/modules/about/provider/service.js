@@ -1,7 +1,6 @@
 import api from './api';
 
 const service = {
-    //test123
     actions: {
         async index() {
             return await axios.get(api.index)
