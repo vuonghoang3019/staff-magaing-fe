@@ -1,5 +1,6 @@
 import api from './api';
 
+console.log('123');
 const service = {
     actions: {
         async index() {
