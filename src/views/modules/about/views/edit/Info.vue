@@ -7,23 +7,23 @@
             <form class="form-content row">
                 <div class="col-md-6 form-group">
                     <label for="ContractNumber">Title</label>
-                    <input type="text" class="form-control" id="Title" v-model="form">
+                    <input type="text" class="form-control" id="Title" v-model="form.Title">
                 </div>
                 <div class="col-md-6 form-group">
                     <label for="ShortContent">ShortContent</label>
-                    <input type="text" class="form-control" id="ShortContent">
+                    <input type="text" class="form-control" id="ShortContent" v-model="form.ShortContent">
                 </div>
                 <div class="col-md-4 form-group">
                     <label for="ShortContent">Seo</label>
-                    <input type="text" class="form-control" id="Seo">
+                    <input type="text" class="form-control" id="Seo" v-model="form.Seo">
                 </div>
                 <div class="col-md-4 form-group">
                     <label for="ShortContent">Sort Order</label>
-                    <input type="text" class="form-control" id="Sort Order">
+                    <input type="text" class="form-control" id="SortOrder" v-model="form.SortOrder">
                 </div>
                 <div class="col-md-4 form-group m-auto">
                     <div class="chiller_cb p-10">
-                        <input id="myCheckbox" type="checkbox">
+                        <input id="myCheckbox" type="checkbox" v-model="form.Status">
                         <label for="myCheckbox">Checkbox checked</label>
                         <span></span>
                     </div>
@@ -52,20 +52,18 @@ export default {
 
     props: {
         form: {
-            type: String,
+            type: Object,
             require: true,
         }
     },
 
     setup(props, context) {
-        const {form} = props;
+        const {form} = toRefs(props);
         const textEditor = {
             editor: ClassicEditor,
-            editorData: '<p>Content of the editor.</p>',
+            editorData: form.value.Content,
             editorConfig: {}
         }
-
-        console.log(form.value);
 
         return {
             textEditor,

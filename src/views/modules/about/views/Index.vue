@@ -61,7 +61,7 @@ import IndexMixin from '@/app/mixins/index-page';
 import {ref, computed, onMounted} from "vue";
 import Config from '../provider/config';
 import CodeHeader from "@/views/modules/about/views/index/CodeHeader";
-import service from "@/views/modules/about/provider/service";
+import composable from "@/views/modules/about/provider/composable";
 import {isNull} from "@/app/helper";
 
 export default {
@@ -72,20 +72,19 @@ export default {
 
     setup(props, context) {
         const itemsSelected = ref([]);
-        let abouts = ref([]);
+        const abouts = ref([]);
 
         onMounted(() => {
             index();
         })
 
         const index = () => {
-            service.actions.index().then(res => {
+            composable.actions.index().then(res => {
                 if (!isNull(res)) {
                     abouts.value = res.data.Data.Abouts.data;
                 }
             })
         }
-
         // const to = computed(() => {
         //     return {name: 'About.Edit', params: {id: }}
         // })

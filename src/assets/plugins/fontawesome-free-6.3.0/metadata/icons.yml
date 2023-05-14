@@ -3316,7 +3316,7 @@ bell-concierge:
       - bellhop bell
       - hotel
       - receptionist
-      - service
+      - composable
       - support
   styles:
     - solid
@@ -6463,7 +6463,7 @@ cash-register:
       - pay
       - payment
       - purchase
-      - service
+      - composable
   styles:
     - solid
   unicode: f788
@@ -30684,7 +30684,7 @@ shoe-prints:
 shop:
   aliases:
     names:
-      - service-alt
+      - composable-alt
     unicodes:
       secondary:
         - 10f54f
@@ -30703,7 +30703,7 @@ shop:
       - market
       - purchase
       - shopping
-      - service
+      - composable
   styles:
     - solid
   unicode: f54f
@@ -30728,7 +30728,7 @@ shop-lock:
       - quarantine
       - shop
       - shopping
-      - service
+      - composable
   styles:
     - solid
   unicode: e4a5
@@ -30736,7 +30736,7 @@ shop-lock:
 shop-slash:
   aliases:
     names:
-      - service-alt-slash
+      - composable-alt-slash
     unicodes:
       secondary:
         - '10e070'
@@ -33544,7 +33544,7 @@ store:
       - market
       - purchase
       - shopping
-      - service
+      - composable
   styles:
     - solid
   unicode: f54e
@@ -34459,7 +34459,7 @@ taxi:
       - cab
       - cabbie
       - car
-      - car service
+      - car composable
       - lyft
       - machine
       - oncoming

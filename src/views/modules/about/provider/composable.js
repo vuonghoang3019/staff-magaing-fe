@@ -1,6 +1,6 @@
 import api from './api';
 
-const service = {
+const composable = {
     actions: {
         async index() {
             return await axios.get(api.index)
@@ -16,4 +16,4 @@ const service = {
     }
 }
 
-export default service;
+export default composable;
