@@ -1,6 +1,6 @@
 <template>
     <div class="box-header with-border">
-        <button-save/>
+        <button-save @click="update"/>
     </div>
     <div class="box-body">
         <div class="col body-form">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-md-12 form-group">
                     <label for="ShortContent">Content</label>
-                    <ckeditor :editor="textEditor.editor" v-model="textEditor.editorData"
+                    <ckeditor :editor="textEditor.editor" v-model="form.Content"
                               :config="textEditor.editorConfig"></ckeditor>
                 </div>
             </form>
@@ -43,6 +43,8 @@ import {ButtonSave} from "@/app/core/components";
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {CKEditor} from '@/app/core/npm';
 import {onMounted, ref, toRefs} from "vue";
+import service from "@/views/modules/about/provider/service";
+import {isNull} from "@/app/helper";
 
 export default {
     components: {
@@ -61,13 +63,22 @@ export default {
         const {form} = toRefs(props);
         const textEditor = {
             editor: ClassicEditor,
-            editorData: form.value.Content,
-            editorConfig: {}
+            editorConfig: {},
+            editorData: form.value.Content
         }
+        const update = () => {
+            service.actions.update(form.value).then(res => {
+                if (!isNull(res)) {
+                    notify.success('Operation success');
+                }
+            })
+        }
+
 
         return {
             textEditor,
-            form
+            form,
+            update
         }
     }
 }

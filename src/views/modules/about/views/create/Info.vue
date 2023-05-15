@@ -43,7 +43,7 @@
     import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
     import {CKEditor} from '@/app/core/npm';
     import {ref, reactive} from 'vue';
-    import composable from "@/views/modules/about/provider/composable";
+    import service from "@/views/modules/about/provider/service";
     import {isNull} from "@/app/helper";
 
     export default {
@@ -61,7 +61,7 @@
             };
 
             const store = () => {
-                composable.actions.store(form).then((res) => {
+                service.actions.store(form).then((res) => {
                     if (!isNull(res)) {
                         notify.success('Operation success');
                     }

@@ -14,7 +14,7 @@
 import EditMixin from '@/app/mixins/edit-page';
 import Info from './edit/Info';
 import {onMounted, ref} from "vue";
-import composable from "@/views/modules/about/provider/composable";
+import service from "@/views/modules/about/provider/service";
 import {useRoute} from 'vue-router';
 import {isNull} from "@/app/helper";
 
@@ -28,7 +28,7 @@ export default {
         const about = ref({});
 
         const edit = () => {
-            composable.actions.edit(route.params.id).then(res => {
+            service.actions.edit(route.params.id).then(res => {
                 if (!isNull(res)) {
                     about.value = res.data.Data.About;
                 }

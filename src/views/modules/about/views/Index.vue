@@ -61,7 +61,7 @@ import IndexMixin from '@/app/mixins/index-page';
 import {ref, computed, onMounted} from "vue";
 import Config from '../provider/config';
 import CodeHeader from "@/views/modules/about/views/index/CodeHeader";
-import composable from "@/views/modules/about/provider/composable";
+import service from "@/views/modules/about/provider/service";
 import {isNull} from "@/app/helper";
 
 export default {
@@ -79,7 +79,7 @@ export default {
         })
 
         const index = () => {
-            composable.actions.index().then(res => {
+            service.actions.index().then(res => {
                 if (!isNull(res)) {
                     abouts.value = res.data.Data.Abouts.data;
                 }

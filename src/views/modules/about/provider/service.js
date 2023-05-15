@@ -1,6 +1,6 @@
 import api from './api';
 
-const composable = {
+const service = {
     actions: {
         async index() {
             return await axios.get(api.index)
@@ -12,8 +12,12 @@ const composable = {
 
         async edit(id) {
             return await axios.get(api.edit.concat(id))
+        },
+
+        async update(data = {}) {
+            return await axios.put(api.update.concat(data.Id), data)
         }
     }
 }
 
-export default composable;
+export default service;
